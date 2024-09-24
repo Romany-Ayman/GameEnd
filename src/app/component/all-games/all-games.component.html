@@ -1,0 +1,72 @@
+<section class="my-2 container">
+  <div class="row">
+    @for (item of allgame.slice(0,40); track item.id) {
+    <div class="col-md-3 g-3">
+      <div class="card">
+        <div [routerLink]="['/delails', item.id]">
+          <img [src]="item.thumbnail" class="w-100" [alt]="item.title" />
+          <p class="text-white">
+            {{ item.short_description | tremtext : 0 : 4 }}
+          </p>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center">
+          <button class="btn-start">Free</button>
+          <button class="btn-start">
+            <a [href]="item.game_url">PlayNow</a>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    }
+
+    <span #all></span>
+    @defer (on viewport(all)) { @for (item of allgame.slice(40,100) ; track
+    item.id) {
+    <div class="col-md-3 g-3">
+      <div class="card">
+        <div [routerLink]="['/delails', item.id]">
+          <img [src]="item.thumbnail" class="w-100" [alt]="item.title" />
+          <p class="text-white">
+            {{ item.short_description | tremtext : 0 : 4 }}
+          </p>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center">
+          <button class="btn-start">Free</button>
+          <button class="btn-start">
+            <a [href]="item.game_url">PlayNow</a>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    } }
+
+    <button class="btn btn-outline-secondary" [disabled]="!isvisible" #see>
+      See More
+    </button>
+    @defer (on interaction(see)) { @for (item of allgame.slice(100,390) ; track
+    item.id) {
+    <div class="col-md-3 g-3">
+      <div class="card">
+        <div [routerLink]="['/delails', item.id]">
+          <img [src]="item.thumbnail" class="w-100" [alt]="item.title" />
+          <p class="text-white">
+            {{ item.short_description | tremtext : 0 : 4 }}
+          </p>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center">
+          <button class="btn-start">Free</button>
+          <button class="btn-start">
+            <a [href]="item.game_url">PlayNow</a>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    } }
+  </div>
+</section>

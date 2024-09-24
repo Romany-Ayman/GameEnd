@@ -1,0 +1,125 @@
+<section>
+  <div class="container">
+    <div class="row my-2">
+      <div class="col-md-5">
+        <div class="conter">
+          <img
+            [src]="detailsGame.thumbnail"
+            height="300px"
+            class="w-100"
+            alt=""
+          />
+          <div
+            class="text-center d-flex justify-content-between align-items-center"
+          >
+            <span class="btn-start px-4">FREE</span>
+            <p>
+              <a [href]="detailsGame.game_url"
+                ><button class="btn-start my-2">
+                  <i class="fa-solid fa-download me-2"></i>PlayNow
+                </button></a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <p class="small">
+          <span routerLink="/home" class="cr">home</span>
+          <i class="fa-solid fa-arrow-right"></i>
+          <span routerLink="/allgames" class="cr">freeGame</span>
+          <i class="fa-solid fa-arrow-right"></i>
+          <span>{{ detailsGame.title }}</span>
+        </p>
+        <h2 class="">{{ detailsGame.title }}</h2>
+        <div class="p-2 my-2 mb-4 pb-4">
+          <h3 class="">
+            About <span class="text-info">{{ detailsGame.title }}</span>
+          </h3>
+
+          <p>{{ detailsGame.description }}</p>
+        </div>
+        <div class="shadow my-2 p-2">
+          <h4 class="text-info">Additional Information</h4>
+          <div class="row">
+            <div class="col-md-4">
+              <p>Title</p>
+              <p class="text-white">{{ detailsGame.title }}</p>
+            </div>
+            <div class="col-md-4">
+              <p>Developer</p>
+              <p class="text-white">{{ detailsGame.developer }}</p>
+            </div>
+            <div class="col-md-4">
+              <p>Publisher</p>
+              <p class="text-white">{{ detailsGame.publisher }}</p>
+            </div>
+          </div>
+          <br />
+
+          <div class="row">
+            <div class="col-md-4">
+              <p>Platform</p>
+              <p class="text-white">
+                <i class="fa-brands fa-windows"></i> {{ detailsGame.platform }}
+              </p>
+            </div>
+            <div class="col-md-4">
+              <p>Release Date</p>
+              <p class="text-white">{{ detailsGame.release_date }}</p>
+            </div>
+            <div class="col-md-4">
+              <p>Genre</p>
+              <p class="text-white">{{ detailsGame.genre }}</p>
+            </div>
+          </div>
+        </div>
+        @if (detailsGame.screenshots) {
+        <div class="mt-3 row my-3">
+          <h3>Overwatch 2 Screenshots</h3>
+          @for (item of detailsGame.screenshots; track $index) {
+          <div class="col-md-4 g-3">
+            <img [src]="item.image" height="150px" class="w-100" alt="" />
+          </div>
+          }
+        </div>
+        } @if (detailsGame.minimum_system_requirements) {
+        <div class="my-3 shadow p-3">
+          <h2>Minimum System Requirements ({{ detailsGame.platform }})</h2>
+
+          <div class="row my-2">
+            <div class="col-md-6">
+              <p>OS</p>
+              <p>{{ detailsGame.minimum_system_requirements.os }}</p>
+            </div>
+            <div class="col-md-6">
+              <p>Processor</p>
+              <p>{{ detailsGame.minimum_system_requirements.processor }}</p>
+            </div>
+          </div>
+          <div class="row my-2">
+            <div class="col-md-6">
+              <p>Memory</p>
+              <p>{{ detailsGame.minimum_system_requirements.memory }}</p>
+            </div>
+            <div class="col-md-6">
+              <p>Graphics</p>
+              <p>{{ detailsGame.minimum_system_requirements.graphics }}</p>
+            </div>
+          </div>
+          <div class="row my-2">
+            <div class="col-md-6">
+              <p>Storage</p>
+              <p>{{ detailsGame.minimum_system_requirements.storage }}</p>
+            </div>
+            <div class="col-md-6">
+              <p>Additional Notes</p>
+              <p>Specifications may change during development</p>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

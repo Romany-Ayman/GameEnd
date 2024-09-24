@@ -1,0 +1,44 @@
+<section class="container-fluid">
+  <div class="row g-3">
+    @for (item of allGame.slice(0,40); track $index) {
+    <div class="col-md-3">
+      <div class="card text-white">
+        <div [routerLink]="['/delails', item.id]">
+          <img [src]="item.thumbnail" class="w-100" alt="" />
+          <p>{{ item.short_description | tremtext : 0 : 4 }}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="main-list">{{ item.platform }}</span>
+            <span class="main-list">{{ item.genre }}</span>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <button class="btn-start">Free</button>
+          <button class="btn-main">
+            <a [href]="item.game_url">PlayNow</a>
+          </button>
+        </div>
+      </div>
+    </div>
+    } @defer ( on timer(6s)) { @for (item of allGame.slice(40); track $index) {
+
+    <div class="col-md-3">
+      <div class="card text-white">
+        <div [routerLink]="['/delails', item.id]">
+          <img [src]="item.thumbnail" class="w-100" alt="" />
+          <p>{{ item.short_description | tremtext : 0 : 4 }}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="main-list">{{ item.platform }}</span>
+            <span class="main-list">{{ item.genre }}</span>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <button class="btn-start">Free</button>
+          <button class="btn-main">
+            <a [href]="item.game_url">PlayNow</a>
+          </button>
+        </div>
+      </div>
+    </div>
+    } }
+  </div>
+</section>

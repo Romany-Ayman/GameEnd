@@ -1,0 +1,107 @@
+<section class="container-fluid">
+  <header class="head d-flex justify-content-center align-items-center">
+    <div class="conter p-3 text-center text-capitalize">
+      <h1 class="h2">
+        Discover the best <span class="text-info">free-to-play </span>games!
+      </h1>
+      <p class="lead">
+        Track what you've played and search for what to play next! Plus get free
+        premium loot!
+      </p>
+      <button class="btn btn-start" routerLink="/login">
+        Gat Started <span class="small">jonin</span>
+      </button>
+      <button mat-raised-button routerLink="/allgames">More Game</button>
+    </div>
+  </header>
+  <div class="container">
+    <div class="row">
+      @for (item of pcGame.slice(0,3); track $index) {
+      <div class="col-md-4 justify-content-center">
+        <div class="text-center gap-3 shadow rounded-4 my-2">
+          <div [routerLink]="['/delails', item.id]">
+            <h3>{{ item.title }}</h3>
+            <div class="card">
+              <img
+                class="w-100 rounded-3"
+                [src]="item.thumbnail"
+                alt="Photo of a Shiba Inu"
+              />
+            </div>
+
+            <p>{{ item.short_description.split(" ", 15).join(" ") }}.</p>
+          </div>
+
+          <div class="d-flex justify-content-between">
+            <span class="btn-start m-0">free</span>
+            <button class="btn-main rounded-4 px-3">
+              <a [href]="item.game_url"></a> Get Started
+            </button>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <h3>New Releases</h3>
+        @for (game of allGame.slice(30,36); track game.id) {
+        <div
+          class="row longe-cnt shadow my-2 rounded-3"
+          [routerLink]="['/delails', game.id]"
+        >
+          <div class="col-md-3">
+            <img [src]="game.thumbnail" class="w-100" height="170px" alt="" />
+          </div>
+          <div class="col-7">
+            <h4>{{ game.title }}</h4>
+            <p>
+              {{ game.short_description }}
+            </p>
+            @for (item of game.genre; track $index) {<span
+              class="bg-secondary rounded-2"
+              >{{ item }}</span
+            >
+            }
+          </div>
+          <div class="col-md-2 align-items-baseline justify-content-between">
+            <div class="my-4"><span class="btn-start my-2 cr">free</span></div>
+            <div class="bg-warning p-2 rounded-2 cr">
+              <span class=" "
+                >@if ( game.platform.includes('Window') ) {
+                <i class="fa-brands fa-windows"></i>
+                } {{ game.platform }}</span
+              >
+            </div>
+            <div class="my-4">
+              <a [href]="game.game_url">
+                <span class="bg-secondary p-2 rounded-2">go Play</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+
+      <div class="col-md-4">
+        <p>Most Played Today</p>
+        @for (item of allGame.slice(50,53); track item.id) {
+        <div class="row shadow my-2 rounded-2">
+          <img [src]="item.thumbnail" class="w-100" height="300px" alt="" />
+          <div class="d-flex justify-content-between align-items-center">
+            <p class="h2">{{ item.title }}</p>
+            <span class="btn-start">free</span>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+  <div class="text-center my-3">
+    <button class="btn btn-outline-secondary" routerLink="/allgames">
+      See More <i class="fa-solid fa-arrow-right" style="color: #ffffff"></i>
+    </button>
+  </div>
+</section>

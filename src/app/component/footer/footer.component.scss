@@ -1,0 +1,16 @@
+.icon{
+   
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex ;
+
+    justify-content: center;
+    align-items: center;
+transition: all .7s;
+}
+.icon:hover{
+    background-color: var(--good-color);
+    scale: 1.05;
+    border: solid 1px var(--seconde-color);
+}

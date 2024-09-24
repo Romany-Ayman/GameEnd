@@ -1,0 +1,9 @@
+{
+  "routes": [
+    "/",
+    "/allgames",
+    "/home",
+    "/login",
+    "/register"
+  ]
+}

@@ -1,0 +1,43 @@
+.head{
+    background-image: url(../../../assets/images/loge.avif);
+    background-size: contain;
+    min-height: 400px;
+    background-color: var(--seconde-color);
+    background-blend-mode: overlay;
+    background-attachment: fixed;
+    
+
+}
+.mat-mdc-button-base {
+    margin: 8px 8px 8px 0;
+  }
+  
+a{
+   text-decoration: none;
+}
+.longe-cnt{
+    overflow: hidden;
+    transition: all .7s;
+}
+.longe-cnt:hover{
+    scale: 1.05;
+   
+    
+}
+
+.example-card {
+    max-width: auto;
+    background-color: var(--main-color);
+    margin: 30px;
+    ::shadow{
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+  }
+  
+  .example-header-image {
+    
+    background-size: cover;
+  }
+  .example-card:hover{
+    scale: 1.01;
+  }

@@ -1,0 +1,85 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid nv">
+    <div class="d-flex justify-content-center align-items-center">
+      <a class="navbar-brand"
+        ><img src="./assets/images/logo-sm.png" width="30px" alt="" />
+      </a>
+      <span>GameEnd</span>
+    </div>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item rounded-3">
+          <a
+            class="nav-link active cr"
+            aria-current="page"
+            routerLink="home"
+            routerLinkActive="active-link"
+            >Home</a
+          >
+        </li>
+        <li
+          class="nav-item cr"
+          routerLink="allgames"
+          routerLinkActive="active-link"
+        >
+          <a class="nav-link">allGames</a>
+        </li>
+        <li class="nav-item dropdown" routerLinkActive="active-link">
+          <a
+            class="nav-link dropdown-toggle"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            free Game
+          </a>
+          <ul class="dropdown-menu bg-info">
+            <li
+              [routerLink]="['/CategoryGames', 'MMORPG']"
+              routerLinkActive="active-link"
+            >
+              <a class="dropdown-item">MMORPG</a>
+            </li>
+            <li
+              [routerLink]="['CategoryGames', 'Shooter']"
+              routerLinkActive="active-link"
+            >
+              <a class="dropdown-item">Shooter</a>
+            </li>
+
+            <li
+              [routerLink]="['CategoryGames', 'Strategy']"
+              routerLinkActive="active-link"
+            >
+              <a class="dropdown-item">Strategy</a>
+            </li>
+            <li
+              [routerLink]="['CategoryGames', 'Sports']"
+              routerLinkActive="active-link"
+            >
+              <a class="dropdown-item">Sports</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="justify-content-between gap-3">
+        <button class="btn btn-main me-3" (click)="removtoken()">login</button>
+        <button class="btn btn-outline-secondary" (click)="toggleTheme()">
+          {{ isDarkMode ? "Light Mode" : "Dark Mode" }}
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
