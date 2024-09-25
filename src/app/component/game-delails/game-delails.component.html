@@ -14,11 +14,12 @@
           >
             <span class="btn-start px-4">FREE</span>
             <p>
-              <a [href]="detailsGame.game_url"
-                ><button class="btn-start my-2">
-                  <i class="fa-solid fa-download me-2"></i>PlayNow
-                </button></a
+              <button
+                class="btn-start my-2"
+                (click)="checkAndNavigate(detailsGame.game_url)"
               >
+                <i class="fa-solid fa-download me-2"></i>PlayNow
+              </button>
             </p>
           </div>
         </div>

@@ -38,9 +38,20 @@ a{
     
     background-size: cover;
   }
+  .example-card{
+    overflow: hidden; 
+    transition: all .8s;
+  }
   .example-card:hover{
     scale: 1.01;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   }
   .span-text{
     background-color: var(--seconde-color);
+    width: fit-content;
+    cursor: pointer;
+    padding: 5px;
+    border-radius:5px;
+
+  
   }

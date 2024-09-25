@@ -16,7 +16,7 @@
           class="conterName d-flex justify-content-center align-items-center"
         >
           <div class="my-2 w-50">
-            <label for="first_name"> first_name </label>
+            <label for="first_name"> First Name </label>
             <input
               [ngClass]="{
                 'is-valid':
@@ -47,7 +47,7 @@
             }
           </div>
           <div class="my-2 w-50">
-            <label for="last_name"> last_name </label>
+            <label for="last_name"> Last Name </label>
             <input
               [ngClass]="{
                 'is-valid':
@@ -110,7 +110,7 @@
           }
         </div>
         <div class="my-2">
-          <label for="password"> password </label>
+          <label for="password"> Password </label>
           <input
             [ngClass]="{
               'is-valid':
@@ -141,7 +141,7 @@
         </div>
 
         <div class="my-2">
-          <label for="age"> age </label>
+          <label for="age"> Age </label>
           <input
             [ngClass]="{
               'is-valid':
@@ -173,7 +173,7 @@
         <button
           [disabled]="registerForm.invalid || isLoading"
           type="submit"
-          class="btn-main d-block ms-auto w-100 my-btn"
+          class="btn-main d-block ms-auto w-100 my-btn p-1"
         >
           Register @if (isLoading) {<span
             ><i class="fa-solid fa-arrows-spin fa-spin"></i></span

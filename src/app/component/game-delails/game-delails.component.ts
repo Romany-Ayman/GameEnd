@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ListGamesService } from '../../core/services/list-games.service';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { IdelailsGame } from '../../core/interfaces/idelails-game';
 import { TremtextPipe } from '../../core/pipes/tremtext.pipe';
 
@@ -14,6 +14,7 @@ import { TremtextPipe } from '../../core/pipes/tremtext.pipe';
 export class GameDelailsComponent implements OnInit {
   private readonly _ListGamesService = inject(ListGamesService);
   private readonly _ActivatedRoute = inject(ActivatedRoute);
+  private readonly _Router = inject(Router);
   detailsGame: IdelailsGame = {} as IdelailsGame;
 
   idgame: any = '';
@@ -29,5 +30,12 @@ export class GameDelailsComponent implements OnInit {
         this.detailsGame = res;
       },
     });
+  }
+  checkAndNavigate(url: string): void {
+    if (localStorage.getItem('uesrName') == null) {
+      this._Router.navigate(['/login']);
+    } else {
+      window.open(url, '_blank');
+    }
   }
 }
