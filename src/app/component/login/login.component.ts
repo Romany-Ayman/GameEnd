@@ -49,7 +49,7 @@ export class LoginComponent implements OnDestroy {
             } else {
               this.msgError = res.message;
             }
-            console.log(res);
+            // console.log(res);
             this.isLoading = false;
           },
           error: (err) => {

@@ -9,7 +9,7 @@ import { ListGamesService } from '../../core/services/list-games.service';
 import { IallGame } from '../../core/interfaces/iall-game';
 import { TremtextPipe } from '../../core/pipes/tremtext.pipe';
 import { NgClass } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { log } from 'console';
 import { Subscription } from 'rxjs';
 
@@ -22,6 +22,7 @@ import { Subscription } from 'rxjs';
 })
 export class AllGamesComponent implements OnInit, OnDestroy {
   private readonly _ListGamesService = inject(ListGamesService);
+  private readonly _Router = inject(Router);
 
   allgame: IallGame[] = [];
   isvisible: boolean = true;
@@ -31,7 +32,7 @@ export class AllGamesComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getAllGamesSub = this._ListGamesService.getAllGames().subscribe({
       next: (res) => {
-        console.log(res);
+        // console.log(res);
         this.allgame = res;
       },
     });
@@ -40,9 +41,16 @@ export class AllGamesComponent implements OnInit, OnDestroy {
   getSpecificGame(id: string | number): void {
     this._ListGamesService.getDetailsGames(id).subscribe({
       next: (res) => {
-        console.log(res);
+        // console.log(res);
       },
     });
+  }
+  checkAndNavigate(url: string): void {
+    if (localStorage.getItem('uesrName') == null) {
+      this._Router.navigate(['/login']);
+    } else {
+      window.open(url, '_blank');
+    }
   }
   ngOnDestroy(): void {
     this.getAllGamesSub?.unsubscribe();

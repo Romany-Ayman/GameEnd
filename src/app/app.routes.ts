@@ -14,17 +14,8 @@ import { authGuard } from './core/guards/auth.guard';
 export const routes: Routes = [
   {
     path: '',
-    component: AuthComponent,
-    children: [
-      { path: '', redirectTo: 'login', pathMatch: 'full' },
-      { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent },
-    ],
-  },
-  {
-    path: '',
     component: BlankComponent,
-    canActivate: [authGuard],
+
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
@@ -36,6 +27,16 @@ export const routes: Routes = [
       { path: 'delails/:id', component: GameDelailsComponent },
     ],
   },
+  {
+    path: '',
+    component: AuthComponent,
+    children: [
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
+    ],
+  },
+
   {
     path: '**',
     component: NotfontComponent,

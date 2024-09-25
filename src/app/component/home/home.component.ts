@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { Ipcgames } from '../../core/interfaces/ipcgames';
 import { Observable, Subscription } from 'rxjs';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -22,8 +22,10 @@ import { RouterLink } from '@angular/router';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   private readonly _ListGamesService = inject(ListGamesService);
+  private readonly _Router = inject(Router);
   pcGame: Ipcgames[] = [];
   allGame: Ipcgames[] = [];
+
   getAllGamesSub!: Subscription;
 
   ngOnInit(): void {
@@ -47,6 +49,13 @@ export class HomeComponent implements OnInit, OnDestroy {
         console.log(res);
       },
     });
+  }
+  checkAndNavigate(url: string): void {
+    if (localStorage.getItem('uesrName') == null) {
+      this._Router.navigate(['/login']);
+    } else {
+      window.open(url, '_blank');
+    }
   }
   ngOnDestroy(): void {
     this.getAllGamesSub?.unsubscribe();

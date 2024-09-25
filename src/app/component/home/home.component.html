@@ -34,8 +34,11 @@
 
           <div class="d-flex justify-content-between">
             <span class="btn-start m-0">free</span>
-            <button class="btn-main rounded-4 px-3">
-              <a [href]="item.game_url"></a> Get Started
+            <button
+              class="btn-main rounded-4 px-3"
+              (click)="checkAndNavigate(item.game_url)"
+            >
+              Get Started
             </button>
           </div>
         </div>
@@ -49,26 +52,25 @@
         <h3>New Releases</h3>
         @for (game of allGame.slice(30,36); track game.id) {
         <div
-          class="row longe-cnt shadow my-2 rounded-3"
-          [routerLink]="['/delails', game.id]"
+          class="row longe-cnt shadow my-2 rounded-3 justify-content-center align-items-center"
         >
           <div class="col-md-3">
             <img [src]="game.thumbnail" class="w-100" height="170px" alt="" />
           </div>
-          <div class="col-7">
+          <div class="col-7" [routerLink]="['/delails', game.id]">
             <h4>{{ game.title }}</h4>
             <p>
               {{ game.short_description }}
             </p>
             @for (item of game.genre; track $index) {<span
-              class="bg-secondary rounded-2"
+              class="span-text rounded-2"
               >{{ item }}</span
             >
             }
           </div>
           <div class="col-md-2 align-items-baseline justify-content-between">
             <div class="my-4"><span class="btn-start my-2 cr">free</span></div>
-            <div class="bg-warning p-2 rounded-2 cr">
+            <div class="span-text p-2 rounded-2 cr">
               <span class=" "
                 >@if ( game.platform.includes('Window') ) {
                 <i class="fa-brands fa-windows"></i>
@@ -76,9 +78,11 @@
               >
             </div>
             <div class="my-4">
-              <a [href]="game.game_url">
-                <span class="bg-secondary p-2 rounded-2">go Play</span>
-              </a>
+              <span
+                class="bg-secondary p-2 rounded-2"
+                (click)="checkAndNavigate(game.game_url)"
+                >go Play</span
+              >
             </div>
           </div>
         </div>
